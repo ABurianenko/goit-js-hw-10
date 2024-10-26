@@ -26,6 +26,8 @@ let userSelectedDate = null;
 let isActive = false;
 let intervalId = null;
 
+btnStart.style.display = 'none';
+
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -42,6 +44,7 @@ const options = {
             btnStart.disabled = true;
         } else {
             btnStart.disabled = false;
+            btnStart.style.display = 'inline';
       }
     // console.log(selectedDates[0]);
   },
@@ -67,7 +70,9 @@ function start() {
 
         if (deltaTime <= 0) {
             clearInterval(intervalId);
-            btnStart.disabled = false;
+            isActive = false;
+            btnStart.disabled = true;
+            datetimePicker.disabled = false;
             return;
         }
         
